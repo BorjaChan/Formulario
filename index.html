@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Curso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/w3.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        
+        .w3-card {
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .form-header {
+            text-align: center;
+            color: #2E7D32;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-content {
+            padding: 20px;
+        }
+        
+        .w3-input:focus {
+            border-bottom: 2px solid #2E7D32 !important;
+        }
+        
+        .w3-check:checked + .w3-validate {
+            border-color: #2E7D32;
+            background-color: #2E7D32;
+        }
+        
+        .w3-button {
+            background-color: #2E7D32 !important;
+            color: white !important;
+        }
+        
+        .w3-button:hover {
+            background-color: #1B5E20 !important;
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon i {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #666;
+        }
+        
+        .input-icon input, 
+        .input-icon select, 
+        .input-icon textarea {
+            padding-left: 35px !important;
+        }
+        
+        .footer-text {
+            text-align: center;
+            margin-top: 15px;
+            color: #616161;
+            font-size: 0.9rem;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .error-message {
+            color: #f44336;
+            display: none;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="w3-card w3-white">
+            <div class="form-header">
+                <h2>Registro de Curso</h2>
+            </div>
+            <div class="form-content">
+                <form id="registroForm" class="w3-container">
+                    <div class="w3-row-padding">
+                        <div class="w3-half">
+                            <div class="w3-margin-bottom input-icon">
+                                <i class="fas fa-user"></i>
+                                <input class="w3-input w3-border" id="nombre" type="text" required>
+                                <label for="nombre">Nombre</label>
+                                <div id="nombreError" class="error-message">Por favor, introduce tu nombre</div>
+                            </div>
+                        </div>
+                        <div class="w3-half">
+                            <div class="w3-margin-bottom input-icon">
+                                <i class="fas fa-user"></i>
+                                <input class="w3-input w3-border" id="apellidos" type="text" required>
+                                <label for="apellidos">Apellidos</label>
+                                <div id="apellidosError" class="error-message">Por favor, introduce tus apellidos</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w3-margin-bottom input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input class="w3-input w3-border" id="email" type="email" required>
+                        <label for="email">Correo Electrónico</label>
+                        <div id="emailError" class="error-message">Por favor, introduce un email válido</div>
+                    </div>
+                    
+                    <div class="w3-margin-bottom input-icon">
+                        <i class="fas fa-phone"></i>
+                        <input class="w3-input w3-border" id="telefono" type="tel" required>
+                        <label for="telefono">Teléfono</label>
+                        <div id="telefonoError" class="error-message">Por favor, introduce un número de teléfono válido</div>
+                    </div>
+                    
+                    <div class="w3-margin-bottom input-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input class="w3-input w3-border" id="fecha_nacimiento" type="date" required>
+                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                        <div id="fechaError" class="error-message">Por favor, selecciona tu fecha de nacimiento</div>
+                    </div>
+                    
+                    <div class="w3-margin-bottom">
+                        <label>Nivel de conocimiento previo:</label>
+                        <div class="w3-margin-top">
+                            <input class="w3-radio" type="radio" name="nivel" value="principiante" checked>
+                            <label>Principiante</label>
+                        </div>
+                        <div>
+                            <input class="w3-radio" type="radio" name="nivel" value="intermedio">
+                            <label>Intermedio</label>
+                        </div>
+                        <div>
+                            <input class="w3-radio" type="radio" name="nivel" value="avanzado">
+                            <label>Avanzado</label>
+                        </div>
+                    </div>
+                    
+                    <div class="w3-margin-bottom input-icon">
+                        <i class="fas fa-book"></i>
+                        <select class="w3-select w3-border" id="curso" required>
+                            <option value="" disabled selected>Selecciona un curso</option>
+                            <option value="1">Desarrollo Web Frontend</option>
+                            <option value="2">JavaScript Avanzado</option>
+                            <option value="3">HTML5 y CSS3</option>
+                            <option value="4">Node.js y Express</option>
+                        </select>
+                        <div id="cursoError" class="error-message">Por favor, selecciona un curso</div>
+                    </div>
+                    
+                    <div class="w3-margin-bottom input-icon">
+                        <i class="fas fa-comment"></i>
+                        <textarea class="w3-input w3-border" id="comentarios" rows="4"></textarea>
+                        <label for="comentarios">Comentarios o Peticiones</label>
+                    </div>
+                    
+                    <div class="w3-margin-bottom">
+                        <input class="w3-check" id="terminos" type="checkbox" required>
+                        <label for="terminos">Acepto los términos y condiciones del curso</label>
+                        <div id="terminosError" class="error-message">Debes aceptar los términos y condiciones</div>
+                    </div>
+                    
+                    <button class="w3-button w3-block w3-margin-bottom" type="submit">
+                        Registrar <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                
+                <div id="successMessage" class="success-message">
+                    ¡Registro completado con éxito!
+                </div>
+                
+                <p class="footer-text">Al registrarte recibirás información sobre este y otros cursos relacionados.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registroForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Función para validar email
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            // Función para validar teléfono (formato básico)
+            function validatePhone(phone) {
+                const re = /^[0-9\s\-\+\(\)]{9,15}$/;
+                return re.test(phone);
+            }
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reiniciar mensajes de error
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(msg => msg.style.display = 'none');
+                
+                // Validar campos
+                let formValido = true;
+                
+                // Nombre
+                if(!document.getElementById('nombre').value.trim()) {
+                    document.getElementById('nombreError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Apellidos
+                if(!document.getElementById('apellidos').value.trim()) {
+                    document.getElementById('apellidosError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Email
+                const email = document.getElementById('email').value;
+                if(!email || !validateEmail(email)) {
+                    document.getElementById('emailError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Teléfono
+                const telefono = document.getElementById('telefono').value;
+                if(!telefono || !validatePhone(telefono)) {
+                    document.getElementById('telefonoError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Fecha
+                if(!document.getElementById('fecha_nacimiento').value) {
+                    document.getElementById('fechaError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Curso
+                if(!document.getElementById('curso').value) {
+                    document.getElementById('cursoError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Términos
+                if(!document.getElementById('terminos').checked) {
+                    document.getElementById('terminosError').style.display = 'block';
+                    formValido = false;
+                }
+                
+                // Si todo es válido
+                if(formValido) {
+                    // Mostrar mensaje de éxito
+                    successMessage.style.display = 'block';
+                    
+                    // Reiniciar formulario
+                    setTimeout(function() {
+                        form.reset();
+                        successMessage.style.display = 'none';
+                    }, 3000);
+                    
+                    // Aquí se enviarían los datos al servidor
+                    console.log('Formulario enviado correctamente');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
